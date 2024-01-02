@@ -1,16 +1,10 @@
-import { providers } from 'ethers';
 import { Token } from '@uniswap/sdk-core';
+import { ethers } from 'ethers';
 
 export interface TradeReq {
-  provider: providers.Provider;
-  wallet: {
-    address: string;
-    privateKey: string;
-  };
-  tokens: {
-    in: Token;
-    amountIn: number;
-    out: Token;
-    poolFee: number;
-  };
+  wallet: ethers.Wallet;
+  tokenIn: Token;
+  tokenOut: Token;
+  amountIn: number;
+  poolFee: number;
 }

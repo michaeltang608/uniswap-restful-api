@@ -23,10 +23,11 @@
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1",
+    "@nestjs/swagger": "^7.1.17",
     "@uniswap/v3-sdk": "^3.9.0",
-    "ethers": "5.7.2"
+    "ethers": "5.7.2",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

@@ -1,7 +1,11 @@
 import { BigNumber, ethers } from 'ethers';
 
-export function fromReadableAmount(amout: number, decimals: number): BigNumber {
-  return ethers.utils.parseUnits(amout.toString(), decimals);
+export function fromReadableAmount(
+  amout: number | string,
+  decimals: number,
+): BigNumber {
+  const amountStr = typeof amout === 'string' ? amout : amout.toString();
+  return ethers.utils.parseUnits(amountStr, decimals);
 }
 
 export function toReadableAmount(

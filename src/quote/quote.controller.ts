@@ -20,7 +20,15 @@ export class QuoteController {
     }
     const symbolIn: string = tokenIn as string;
     const symbolOut: string = tokenOut as string;
-    const ratio = await quotePrice(symbolIn, symbolOut, amountIn);
-    return { tokenIn: tokenIn, tokenOut: tokenOut, ratio: ratio };
+    const { suc, msg, amountOut } = await quotePrice(
+      symbolIn.toUpperCase(),
+      symbolOut.toUpperCase(),
+      amountIn,
+    );
+    if (suc) {
+      return { tokenIn, tokenOut, amountOut };
+    } else {
+      return { suc, msg };
+    }
   }
 }

@@ -15,6 +15,13 @@ const tokens: Token[] = [
     'USDC',
     'USD//C',
   ),
+  new Token(
+    ChainId.MAINNET,
+    '0x6b175474e89094c44da98b954eedeac495271d0f',
+    6,
+    'DAI',
+    'DAI',
+  ),
 ];
 
 const tokenMap = new Map<string, Token>();

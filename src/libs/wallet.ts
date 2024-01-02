@@ -1,13 +1,10 @@
 import { ethers } from 'ethers';
-import { ERC20_ABI } from './abis/abi';
+import { ERC20_ABI } from './consts/abi';
 import { toReadableAmount } from './util';
 import provider from './provider';
 import tokenMap from './consts/tokens';
 
-export function createWallet(
-  prvKey: string,
-  provider: ethers.providers.Provider,
-): ethers.Wallet {
+export function createWallet(prvKey: string): ethers.Wallet {
   return new ethers.Wallet(prvKey, provider);
 }
 

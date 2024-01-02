@@ -13,18 +13,21 @@ const quote = async (
   symbolIn: string,
   symbolOut: string,
   amountIn: number,
-): Promise<string> => {
+): Promise<{ suc: boolean; amountOut?: string; msg?: string }> => {
   log('quote begin');
+  let msg = '';
   if (!tokens.has(symbolIn)) {
-    return `can not find token info for ${symbolIn}`;
+    msg = `can not find token info for ${symbolIn}}`;
+    return { suc: false, msg: msg };
   }
   if (!tokens.has(symbolOut)) {
-    return `can not find token info for ${symbolOut}`;
+    msg = `can not find token info for ${symbolOut}}`;
+    return { suc: false, msg: msg };
   }
   const tokenIn = tokens.get(symbolIn);
   const tokenOut = tokens.get(symbolOut);
   const quoterContract = new ethers.Contract(
-    ContractAddress.QUOTER,
+    ContractAddress.UNISWAP_V3_QUOTER,
     Quorter.abi,
     provider,
   );
@@ -39,7 +42,8 @@ const quote = async (
     0,
   );
 
-  return toReadableAmount(quotedAmountOut, tokenOut.decimals);
+  const amountOut = toReadableAmount(quotedAmountOut, tokenOut.decimals);
+  return { suc: true, amountOut };
 };
 
 async function getPoolConstants(
@@ -51,7 +55,7 @@ async function getPoolConstants(
   fee: number;
 }> {
   const poolAddress = computePoolAddress({
-    factoryAddress: ContractAddress.POOL_FACTORY,
+    factoryAddress: ContractAddress.POOL_FACTORY_V3,
     tokenA: tokenIn,
     tokenB: tokenOut,
     fee: FeeAmount.MEDIUM,
