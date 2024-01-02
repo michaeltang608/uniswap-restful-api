@@ -1,5 +1,4 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { ApiParam} from '@nestjs/swagger'
 import { log } from 'console';
 import { getBalance } from '../libs/wallet';
 import { walletAddress } from '../config';
