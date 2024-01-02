@@ -1,7 +1,7 @@
 export class SwapDto {
-  symbolIn: string;
+  tokenIn: string;
 
-  symbolOut: string;
+  tokenOut: string;
 
   amountIn: number;
 }

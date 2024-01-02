@@ -9,8 +9,8 @@ export class SwapController {
   @Post()
   async swap(@Body() req: SwapDto) {
     const { suc, msg } = await swap(
-      req.symbolIn,
-      req.symbolOut,
+      req.tokenIn,
+      req.tokenOut,
       req.amountIn,
       prvKey,
     );
